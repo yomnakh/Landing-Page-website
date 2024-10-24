@@ -145,6 +145,63 @@ section {
   }
 }
 
+.navbar__menu-btn {
+        display: none;
+        position: absolute; /* Ensure it's positioned relative to the nav */
+        right: 1rem; /* Aligns the button to the right */
+        top: 1rem;  /* Aligns the button at the top */
+        font-size: 24px;
+        background-color: #03113F;
+        color: white;
+        border: none;
+        cursor: pointer;
+        z-index: 20; /* Makes sure the button stays above other elements */
+}
+#navbar__list {
+    display: block;
+    padding-left: 0;
+    margin: 0;
+    text-align: right;
+}
+#navbar__list.active {
+    display: block;
+}
+@media only screen and (max-width: 65em) {
+    #navbar__list {
+        display: none; 
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.9); 
+        position: absolute; 
+        top: 50px; 
+        right: 0;
+        width: 100%; 
+        z-index: 10; 
+    }
+    
+    #navbar__list.active {
+        display: flex; /* Show the nav when the button is clicked */
+    }
+
+    .navbar__menu li {
+        width: 100%;
+        text-align: center; 
+    }
+    .navbar__menu li:hover {
+        background: #333;
+        color: #fff;
+        transition: ease 0.3s all;
+    }
+
+    .navbar__menu-btn {
+        display: block;
+        /* background-color: #03113F;
+        color: white;
+        border: none;
+        cursor: pointer; */
+
+    }
+}
+
 /* Header Styles */
 .page__header {
   background: #fff;
