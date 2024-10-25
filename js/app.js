@@ -14,21 +14,13 @@
  */
 
 /**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
- */
-
-/**
  * Define Global Variables
- *
  */
 const navbarList = document.getElementById("navbar__list");
 const sections = document.querySelectorAll("section");
-/**
- * End Global Variables
- * Start Helper Functions
- *
- */
+
+
+// build the nav
 sections.forEach(function (section) {
   const listItem = document.createElement("li");
   listItem.innerHTML = `<a class="menu__link" href="#${section.id}" data-nav="${section.id}">${section.dataset.nav}</a>`;
@@ -40,36 +32,21 @@ const nav__btn = document.querySelector(".navbar__menu-btn");
 nav__btn.addEventListener("click", () => {
   navbarList.classList.toggle("active");
 });
-/**
- * End Helper Functions
- * Begin Main Functions
- *
- */
-
-// build the nav
-
 // Add class 'active' to section when near top of viewport
-
-// Scroll to anchor ID using scrollTO event
-
-/**
- * End Main Functions
- * Begin Events
- *
- */
-
-// Set sections as active
 const navLists = document.querySelectorAll(".menu__link");
 
 // Function to Make Sections Active
 function makeActive() {
+
+  let currentSection = null;
+
   for (const section of sections) {
     const box = section.getBoundingClientRect();
     const value = 150;
-
     // Check if the section is in the viewport using top and bottom values
     if (box.top <= value && box.bottom >= value) {
       // Add active state to current section
+      currentSection = section;
       section.classList.add("your-active-class");
 
       // Find the corresponding navigation link
@@ -88,6 +65,7 @@ function makeActive() {
 }
 // Call makeActive() when the user scrolls the page
 document.addEventListener("scroll", makeActive);
+document.addEventListener('DOMContentLoaded', makeActive);
 
 // Build menu
 
@@ -104,18 +82,33 @@ navbarList.addEventListener("click", (evet) => {
   }
 });
 
+//Hide fixed navigation bar while not scrolling
+let hideNav;
+window.addEventListener("scroll", () => {
+  // Show the navigation bar when scrolling starts
+  navbarList.style.top = "0";
+
+  navbarList.style.display = "block";
+  clearTimeout(hideNav);
+  hideNav = setTimeout(function () {
+    navbarList.style.display = "none";
+  }, 800);
+});
+
 // To The Top Button when scrolling using onScroll
 const top__btn = document.querySelector(".top-btn");
 
 window.onscroll = () => {
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+  if (
+    document.body.scrollTop > 100 ||
+    document.documentElement.scrollTop > 100
+  ) {
     top__btn.style.display = "block";
-  }else {
+  } else {
     top__btn.style.display = "none";
   }
 };
-top__btn.addEventListener('click', () => {
-  document.body.scrollTop = 0;
-  window.scrollTo({ top: 0, behavior: "smooth" }); // Smooth scroll to top
-})
-b9bdc6d18ca679b9d41ebd0b41d1332
+top__btn.addEventListener("click", () => {
+
+  window.scrollTo({ top: 0, behavior: "smooth" }); 
+});

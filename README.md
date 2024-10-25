@@ -1,9 +1,29 @@
-# Landing Page Project
+Responsive Landing Page Project
 
-## Instructions
+A fully responsive multi-section landing page with dynamic navigation built using HTML, CSS, and JavaScript.
+Features
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+    Responsive design: Adjusts to different screen sizes.
+    Dynamic navigation: Menu items are generated based on page sections.
+    Smooth scrolling: Links scroll smoothly to corresponding sections.
+    Mobile menu toggle: A responsive navigation menu for smaller screens.
 
-To get started, open `js/app.js` and start building out the app's functionality
+Usage
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+    Clone or download the repository.
+    Open the index.html file in your browser.
+    View the page on different screen sizes to test responsiveness.
+
+File Structure
+
+    index.html – The main HTML file.
+    styles.css – Contains all the custom styles.
+    script.js – Handles dynamic navigation and smooth scrolling behavior.
+
+Dependencies
+
+    No external libraries or frameworks are used. Just vanilla HTML, CSS, and JavaScript.
+
+License
+
+This project is © Udacity - Modified By Mohammed Nasif.
