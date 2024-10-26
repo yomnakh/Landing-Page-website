@@ -30,8 +30,15 @@ sections.forEach(function (section) {
 // Navigation button in the smaller screens
 const nav__btn = document.querySelector(".navbar__menu-btn");
 nav__btn.addEventListener("click", () => {
-  navbarList.classList.toggle("active");
+
+  // navbarList.classList.toggle("active");
+  if (navbarList.style.display === "block") {
+    navbarList.style.display = "none";
+  } else {
+    navbarList.style.display = "block";
+  }
 });
+
 // Add class 'active' to section when near top of viewport
 const navLists = document.querySelectorAll(".menu__link");
 
@@ -65,35 +72,58 @@ function makeActive() {
 }
 // Call makeActive() when the user scrolls the page
 document.addEventListener("scroll", makeActive);
+//Prevent the makeActive function to start on load of the page 
 document.addEventListener('DOMContentLoaded', makeActive);
 
 // Build menu
 
 // Scroll to section on link click
-navbarList.addEventListener("click", (evet) => {
-  evet.preventDefault();
-  console.log(evet.target);
+navbarList.addEventListener("click", (event) => {
+  event.preventDefault();
+  console.log(event.target);
 
   // Scroll to anchor ID using scrollIntoView event
-  if (evet.target.dataset.nav) {
+  if (event.target.dataset.nav) {
     document
-      .getElementById(`${evet.target.dataset.nav}`)
+      .getElementById(`${event.target.dataset.nav}`)
       .scrollIntoView({ behavior: "smooth" });
   }
 });
 
-//Hide fixed navigation bar while not scrolling
+// Hide fixed navigation bar while not scrolling
 let hideNav;
 window.addEventListener("scroll", () => {
-  // Show the navigation bar when scrolling starts
-  navbarList.style.top = "0";
+  // Only apply behavior if the screen width is above 768px
+  if (window.innerWidth > 1000) {
+    navbarList.style.display = "block"; // Always show on scroll
+  }
 
-  navbarList.style.display = "block";
+  // Clear the previous hideNav timeout to reset it
   clearTimeout(hideNav);
+
+  // Set a timeout to hide the navbar after scrolling stops
   hideNav = setTimeout(function () {
-    navbarList.style.display = "none";
+    if (window.innerWidth > 1000) {
+      navbarList.style.display = "none";
+    }
   }, 800);
 });
+
+
+// Prevent navbar from hiding when the user hovers over it
+navbarList.addEventListener("mouseenter", () => {
+  clearTimeout(hideNav); 
+  // navbarList.style.display = "block"; // Ensure the navbar is visible
+});
+navbarList.addEventListener("mouseleave", () => {
+  // Set the hide timeout again when the user moves the mouse away
+  hideNav = setTimeout(function () {
+    if (window.innerWidth > 1000) {
+      navbarList.style.display = "none";
+    }
+  }, 1000);
+});
+
 
 // To The Top Button when scrolling using onScroll
 const top__btn = document.querySelector(".top-btn");

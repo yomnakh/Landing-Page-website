@@ -132,6 +132,9 @@ section {
 #navbar__list.active {
     display: block;
 }
+.hide-navbar {
+  display: none !important;
+}
 @media only screen and (max-width: 65em) {
     #navbar__list {
         display: none; 
@@ -184,7 +187,7 @@ section {
   height: 45px;
   border-radius: 50%;
   color: white;
-  background-color: #007bff;
+  background-color: #324993;
   position: fixed;
   bottom: 20px;
   right: 70px;

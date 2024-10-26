@@ -1,6 +1,7 @@
 Responsive Landing Page Project
 
 A fully responsive multi-section landing page with dynamic navigation built using HTML, CSS, and JavaScript.
+
 Features
 
     Responsive design: Adjusts to different screen sizes.
@@ -26,4 +27,4 @@ Dependencies
 
 License
 
-This project is © Udacity - Modified By Mohammed Nasif.
+This project is © Udacity - Modified by Yomna Khaled.
